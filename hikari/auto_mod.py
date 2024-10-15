@@ -125,6 +125,12 @@ class AutoModTriggerType(int, enums.Enum):
     KEYWORD_PRESET = 4
     """Discord's preset keyword triggers."""
 
+    MENTION_SPAM = 5
+    """Discord's mention spam system."""
+
+    MEMBER_PROFILE = 6
+    """Match member profile against a list of keywords."""
+
 
 class AutoModKeywordPresetType(int, enums.Enum):
     """Discord's KEYWORD_PRESET type."""
