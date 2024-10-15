@@ -2450,7 +2450,7 @@ class GuildPreview(PartialGuild):
     """A preview of a guild with the [`hikari.guilds.GuildFeature.DISCOVERABLE`][] feature."""
 
     features: typing.Sequence[typing.Union[str, GuildFeature]] = attrs.field(eq=False, hash=False, repr=False)
-    """A list of the features in this guild."""
+    """A sequence of the features in this guild."""
 
     splash_hash: typing.Optional[str] = attrs.field(eq=False, hash=False, repr=False)
     """The hash of the splash for the guild, if there is one."""
@@ -2546,7 +2546,7 @@ class Guild(PartialGuild):
     """A representation of a guild on Discord."""
 
     features: typing.Sequence[typing.Union[str, GuildFeature]] = attrs.field(eq=False, hash=False, repr=False)
-    """A list of the features in this guild."""
+    """A sequence of the features in this guild."""
 
     application_id: typing.Optional[snowflakes.Snowflake] = attrs.field(eq=False, hash=False, repr=False)
     """The ID of the application that created this guild.
