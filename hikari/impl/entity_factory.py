@@ -514,6 +514,8 @@ class EntityFactoryImpl(entity_factory.EntityFactory):
             auto_mod_models.AutoModTriggerType.KEYWORD: self._deserialize_auto_mod_keyword_trigger,
             auto_mod_models.AutoModTriggerType.KEYWORD_PRESET: self._deserialize_auto_mod_keyword_preset_trigger,
             auto_mod_models.AutoModTriggerType.SPAM: self._deserialize_auto_mod_spam_trigger,
+            auto_mod_models.AutoModTriggerType.MENTION_SPAM: self._deserialize_auto_mod_mention_spam_trigger,
+            auto_mod_models.AutoModTriggerType.MEMBER_PROFILE: self._deserialize_auto_mod_member_profile_trigger,
         }
         self._command_mapping = {
             commands.CommandType.SLASH: self.deserialize_slash_command,
@@ -3850,6 +3852,16 @@ class EntityFactoryImpl(entity_factory.EntityFactory):
         self, _: typing.Optional[data_binding.JSONObject], /
     ) -> auto_mod_models.SpamTrigger:
         return auto_mod_models.SpamTrigger(type=auto_mod_models.AutoModTriggerType.SPAM)
+
+    def _deserialize_auto_mod_mention_spam_trigger(
+        self, _: typing.Optional[data_binding.JSONObject], /
+    ) -> auto_mod_models.MentionSpamTrigger:
+        return auto_mod_models.MentionSpamTrigger(type=auto_mod_models.AutoModTriggerType.MENTION_SPAM)
+
+    def _deserialize_auto_mod_member_profile_trigger(
+        self, _: typing.Optional[data_binding.JSONObject], /
+    ) -> auto_mod_models.MemberProfileTrigger:
+        return auto_mod_models.MemberProfileTrigger(type=auto_mod_models.AutoModTriggerType.MEMBER_PROFILE)
 
     def deserialize_auto_mod_rule(self, payload: data_binding.JSONObject) -> auto_mod_models.AutoModRule:
         trigger_type = auto_mod_models.AutoModTriggerType(payload["trigger_type"])

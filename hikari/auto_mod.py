@@ -177,6 +177,18 @@ class SpamTrigger(PartialAutoModTrigger):
     __slots__: typing.Sequence[str] = []
 
 
+class MentionSpamTrigger(PartialAutoModTrigger):
+    """A trigger based on Discord's mention spam detection."""
+
+    __slots__: typing.Sequence[str] = []
+
+
+class MemberProfileTrigger(PartialAutoModTrigger):
+    """A trigger based on matching a member's profile against a list of keywords."""
+
+    __slots__: typing.Sequence[str] = []
+
+
 @attr.define(kw_only=True, weakref_slot=False)
 class KeywordPresetTrigger(PartialAutoModTrigger):
     """A trigger based on a predefined set of presets provided by Discord."""
